@@ -12,6 +12,7 @@
 
 void SpiInit( Spi_t *obj, SpiId_t spiId, PinNames mosi, PinNames miso, PinNames sclk, PinNames nss )
 {
+    obj->SpiId=spiId;
     spi_init((spiId == 0) ? spi0 : spi1, 10 * 1000 * 1000);
     spi_set_format((spiId == 0) ? spi0 : spi1, 8, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
     gpio_set_function(mosi, GPIO_FUNC_SPI);
